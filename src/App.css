@@ -127,3 +127,11 @@ input:disabled, select:disabled, textarea:disabled { background: #eef2f1; color:
   .notification { left: 1rem; max-width: none; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* Reviews table and popup form */
+.table-wrap { overflow-x: auto; }
+.reviews-table { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid var(--line); }
+.reviews-table th, .reviews-table td { padding: .7rem .8rem; border-bottom: 1px solid var(--line); text-align: left; vertical-align: middle; }
+.reviews-table th { background: var(--mint); }
+.review-form { display: flex; flex-direction: column; padding: 1.25rem; }
+.review-form .btn { margin-top: 1rem; }

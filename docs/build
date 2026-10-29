@@ -1,12 +1,46 @@
-
+﻿
 > stayhealthy@0.1.0 build
 > react-scripts build
 
+node.exe : (node:23868) [DEP0176] DeprecationWarning: fs.F_OK is deprecated, use fs.constants.F_OK instead
+At line:1 char:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Program Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ((node:23868) [D...ts.F_OK instead:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+(Use `node --trace-deprecation ...` to show where the warning was created)
 Creating an optimized production build...
 Compiled successfully.
 
 File sizes after gzip:
 
-  57.79 kB  build/static/js/main.8d2e836a.js
-  1.92 kB   build/static/css/main.56e9fc8f.css
+  57.79 kB  build\static\js\main.8d2e836a.js
+  1.92 kB   build\static\css\main.56e9fc8f.css
+
+The project was built assuming it is hosted at /.
+You can control this with the homepage field in your package.json.
+
+The build folder is ready to be deployed.
+You may serve it with a static server:
+
+  npm install -g serve
+  serve -s build
+
+Find out more about deployment here:
+
+  https://cra.link/deployment
+
+Current folder:
+D:\StayHealthy\server
+
+Contents of server\build:
+
+Mode   LastWriteTime         Length Name               
+----   -------------         ------ ----               
+d----- 29-Oct-26 12:32:45 PM        static             
+-a---- 29-Oct-26 12:32:45 PM 369    asset-manifest.json
+-a---- 29-Oct-26 12:32:45 PM 1878   index.html         
+
+
 

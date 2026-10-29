@@ -1,9 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import doctors from "../../data/doctors";
 
-// Search box for the Appointment Booking page.
-// Filters doctors by name or speciality and reports the matches to the parent.
-function FindDoctorSearch({ doctors, onResults }) {
-  const [query, setQuery] = useState("");
+// Doctor search for the Appointment Booking page.
+// Typing shows matching specialities; choosing one (or pressing Search)
+// navigates to the search results route.
+function FindDoctorSearch({ initialQuery = "" }) {
+  const navigate = useNavigate();
+  const [query, setQuery] = useState(initialQuery);
   const [showSuggestions, setShowSuggestions] = useState(false);
 
   const specialities = [...new Set(doctors.map((d) => d.speciality))];
@@ -11,26 +15,20 @@ function FindDoctorSearch({ doctors, onResults }) {
     s.toLowerCase().includes(query.trim().toLowerCase())
   );
 
-  useEffect(() => {
-    const q = query.trim().toLowerCase();
-    const matches = q
-      ? doctors.filter(
-          (d) =>
-            d.name.toLowerCase().includes(q) ||
-            d.speciality.toLowerCase().includes(q)
-        )
-      : doctors;
-    onResults(matches);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [query, doctors]);
-
-  const pick = (speciality) => {
-    setQuery(speciality);
+  const goToResults = (value) => {
+    const term = value.trim();
+    if (!term) return navigate("/appointments");
+    setQuery(term);
     setShowSuggestions(false);
+    navigate(`/search-results?search=${encodeURIComponent(term)}`);
   };
 
   return (
-    <div className="search">
+    <form
+      className="search"
+      onSubmit={(e) => { e.preventDefault(); goToResults(query); }}
+      role="search"
+    >
       <label htmlFor="doctor-search">Find a doctor by name or speciality</label>
       <div className="search-box">
         <input
@@ -43,19 +41,19 @@ function FindDoctorSearch({ doctors, onResults }) {
           onFocus={() => setShowSuggestions(true)}
           onBlur={() => setTimeout(() => setShowSuggestions(false), 150)}
         />
-        {query && (
-          <button type="button" className="btn btn-outline" onClick={() => setQuery("")}>Clear</button>
-        )}
+        <button type="submit" className="btn btn-solid">Search</button>
       </div>
 
       {showSuggestions && query && suggestions.length > 0 && (
         <ul className="suggestions" role="listbox">
           {suggestions.map((s) => (
-            <li key={s} role="option" aria-selected="false" onMouseDown={() => pick(s)}>{s}</li>
+            <li key={s} role="option" aria-selected="false" onMouseDown={() => goToResults(s)}>
+              {s}
+            </li>
           ))}
         </ul>
       )}
-    </div>
+    </form>
   );
 }
 

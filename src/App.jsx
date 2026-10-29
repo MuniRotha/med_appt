@@ -9,6 +9,7 @@ import BookingConsultation from "./Components/BookingConsultation/BookingConsult
 import InstantConsultation from "./Components/InstantConsultation/InstantConsultation";
 import GiveReviews from "./Components/GiveReviews/GiveReviews";
 import ProfileCard from "./Components/ProfileCard/ProfileCard";
+import SearchResults from "./Components/SearchResults/SearchResults";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
           <Route path="/appointments" element={<BookingConsultation />} />
+          <Route path="/search-results" element={<SearchResults />} />
           <Route path="/instant-consultation" element={<InstantConsultation />} />
           <Route path="/reviews" element={<GiveReviews />} />
           <Route path="/profile" element={<ProfileCard />} />
