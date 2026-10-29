@@ -1,0 +1,12 @@
+
+> stayhealthy@0.1.0 build
+> react-scripts build
+
+Creating an optimized production build...
+Compiled successfully.
+
+File sizes after gzip:
+
+  57.79 kB  build/static/js/main.8d2e836a.js
+  1.92 kB   build/static/css/main.56e9fc8f.css
+

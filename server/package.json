@@ -1,0 +1,13 @@
+{
+  "name": "stayhealthy-server",
+  "version": "1.0.0",
+  "description": "Minimal auth API for StayHealthy (register and login)",
+  "main": "server.js",
+  "scripts": { "start": "node server.js" },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2"
+  }
+}
